@@ -1,8 +1,5 @@
-import org.jetbrains.kotlin.gradle.dsl.KotlinJvmProjectExtension
-
 plugins {
-    kotlin("multiplatform")
-    `maven-publish`
+    `kmongo-build-plugin`
 }
 
 allprojects {
@@ -16,22 +13,26 @@ allprojects {
         mavenCentral()
         jcenter()
     }
+}
+
+kotlin.sourceSets {
+
+    val kotlinxSerializationVersion: String by project
+    val mongoDriverVersion: String by project
+
+    commonMain {
+        dependencies {
+            api("org.jetbrains.kotlinx", "kotlinx-serialization-core", kotlinxSerializationVersion)
+        }
+    }
+
+    jvmMain {
+        dependencies {
+            api(kotlin("reflect"))
+            api(project(":id"))
+            api("org.mongodb", "mongodb-driver-core", mongoDriverVersion)
+        }
+    }
 
 }
 
-kotlin {
-    jvm {
-        compilations.all {
-            kotlinOptions.jvmTarget = "1.8"
-        }
-    }
-    sourceSets {
-        named("jvmMain") {
-            dependencies {
-                api(kotlin("reflect"))
-                api(project(":id"))
-                api("org.mongodb:mongodb-driver-core")
-            }
-        }
-    }
-}

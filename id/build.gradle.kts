@@ -1,0 +1,3 @@
+plugins {
+    `kmongo-build-plugin`
+}

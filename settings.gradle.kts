@@ -1,15 +1,3 @@
-pluginManagement {
-    repositories {
-        mavenCentral()
-        jcenter()
-        gradlePluginPortal()
-    }
-    plugins {
-        val kotlinVersion: String by settings
-        kotlin("multiplatform") version kotlinVersion
-    }
-}
-
 rootProject.name = "kmongo"
 
 include(
@@ -27,6 +15,7 @@ include(
     ":flapdoodle",
     ":id",
     ":id:jackson",
+    ":id:serialization",
     ":jackson-mapping",
     ":native",
     ":native-mapping",
