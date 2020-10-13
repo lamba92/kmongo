@@ -2,7 +2,9 @@
 **/target/*
 !**/target/generated-sources
 *.iml
-
+out/
+build/
+.gradle/
 
 ##############################
 ## Maven
