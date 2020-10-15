@@ -28,9 +28,8 @@ kotlin.sourceSets {
 
     jvmMain {
         dependencies {
-            api(kotlin("reflect"))
             api(project(":id"))
-            api("org.mongodb", "mongodb-driver-core", mongoDriverVersion)
+            api(mongodb("driver-core", mongoDriverVersion))
         }
     }
 
